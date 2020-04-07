@@ -2,7 +2,8 @@ package com.example.appfemmeit
 
 import android.content.Intent
 import android.os.Bundle
-import kotlinx.android.synthetic.main.login.*
+import kotlinx.android.synthetic.main.logincontraint.*
+
 
 class MainActivity : DebugActivity() {
 
