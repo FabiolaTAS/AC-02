@@ -1,17 +1,14 @@
 package com.example.appfemmeit
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_tela_inicial.*
 import kotlinx.android.synthetic.main.login.*
 
 class MainActivity : DebugActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login)
+        setContentView(R.layout.logincontraint)
         logo_App.setImageResource(R.drawable.femmeit)
         mensagem_login.setText(R.string.str_login)
         user.setText(R.string.user)
