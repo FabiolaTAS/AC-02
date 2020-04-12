@@ -27,7 +27,7 @@ class MainActivity : DebugActivity() {
             intent.putExtras(parans)
 
             //incluir validacao de login
-            if (valorUser != "aluno" && valorPass != "impacta"){
+            if (valorUser != "aluno" || valorPass != "impacta"){
                 androidx.appcompat.app.AlertDialog.Builder(this)
                 .setTitle(R.string.app_name)
                 .setMessage("Senha ou Login invalidos!")

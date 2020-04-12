@@ -19,11 +19,11 @@ class CadastroGeralActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         var args = intent.extras
-        val nome = args?.getString("nome")
+        val parametro = args?.getString("parametro")
 
-        text_inicial.setText(nome)
+        supportActionBar?.title = "Cadastro " + parametro
 
-    }
+  }
 
 
 

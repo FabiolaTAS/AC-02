@@ -41,6 +41,19 @@
         app:layout_constraintTop_toBottomOf="@+id/textoInicial"
         app:layout_constraintVertical_bias="0.612" />
 
+
+    <ProgressBar
+        android:id="@+id/atualizando"
+        android:layout_width="369dp"
+        android:layout_height="230dp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_cadastrarMulher"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bt_cadastrarComunidades"
+        app:layout_constraintVertical_bias="0.504"
+        tools:visibility="invisible"
+        />
+
     <Button
         android:id="@+id/bt_cadastrarEmpresa"
         android:layout_width="222dp"
