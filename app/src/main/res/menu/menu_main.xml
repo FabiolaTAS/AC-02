@@ -20,12 +20,4 @@
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_atualizar_white"
         />
-
-    <item android:id="@+id/action_config"
-        android:title="Configurações"
-        app:showAsAction="never"
-        android:icon="@drawable/ic_configuracoes_white"
-        />
-
-
 </menu>

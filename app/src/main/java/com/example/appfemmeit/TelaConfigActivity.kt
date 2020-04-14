@@ -34,12 +34,7 @@ class TelaConfigActivity : AppCompatActivity() {
             Toast.makeText(this, "Clicou em buscar", Toast.LENGTH_LONG).show()
         } else if (id == R.id.action_atualizar) {
             Toast.makeText(this, "Clicou em atualizar", Toast.LENGTH_LONG).show()
-        } else if (id == R.id.action_config) {
-            Toast.makeText(this, "Clicou em configurações", Toast.LENGTH_LONG).show()
-            //entra na tela de Configuração
-            var intent = Intent(this , TelaConfigActivity::class.java)
-            startActivity(intent)
-        } else if (id == R.id.action_adiconar) {
+       } else if (id == R.id.action_adiconar) {
             Toast.makeText(this, "Clicou em Adiconar", Toast.LENGTH_LONG).show()
             //entra na tela de cadastro
             var intent = Intent(this , TelaCadastroActivity::class.java)

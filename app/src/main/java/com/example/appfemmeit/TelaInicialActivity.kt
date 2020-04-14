@@ -5,22 +5,25 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.GravityCompat
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_tela_inicial.*
 import kotlinx.android.synthetic.main.toolbar.*
 
-class TelaInicialActivity : DebugActivity() {
+class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val context: Context get() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_inicial)
-
 
 
         //setando valores
@@ -30,7 +33,9 @@ class TelaInicialActivity : DebugActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Tela Incial"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        atualizando.visibility = View.INVISIBLE
+
+
+         atualizando.visibility = View.INVISIBLE
 
         //Toast.makeText(this, "Bem Vindo $nome", Toast.LENGTH_LONG).show()
         textoInicial.setText("Seja Bem vindo " + nome)
@@ -59,6 +64,8 @@ class TelaInicialActivity : DebugActivity() {
         bt_cadastrarComunidades.setOnClickListener{
             clickComunidade()
         }
+
+        ConfiguraMenuLateral()
 
     }
 
@@ -132,12 +139,6 @@ class TelaInicialActivity : DebugActivity() {
             Handler().postDelayed({
                     atualizando.setVisibility(View.INVISIBLE)
             }, 10000)
-
-        } else if (id == R.id.action_config) {
-            Toast.makeText(this, "Clicou em configurações", Toast.LENGTH_LONG).show()
-           //entra na tela de Configuração
-            var intent = Intent(this , TelaConfigActivity::class.java)
-            startActivity(intent)
         } else if (id == R.id.action_adiconar) {
             Toast.makeText(this, "Clicou em Adiconar", Toast.LENGTH_LONG).show()
             //entra na tela de cadastro
@@ -147,5 +148,44 @@ class TelaInicialActivity : DebugActivity() {
             finish()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+
+    private fun ConfiguraMenuLateral(){
+        var toggle = ActionBarDrawerToggle(
+            this,
+            layoutMenuLateral,
+            toolbar,
+            R.string.nav_pen,
+            R.string.nav_close
+        )
+        layoutMenuLateral.addDrawerListener(toggle)
+        toggle.syncState()
+
+        menu_lateral.setNavigationItemSelectedListener(
+            this
+        )
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.nav_perfil ->{
+                Toast.makeText(this, "Clicou em perfil", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_chat ->{
+                Toast.makeText(this, "Clicou em CHAT", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_forum ->{
+                Toast.makeText(this, "Clicou em Forum", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_localizacao -> {
+                Toast.makeText(this, "Clicou em Localização", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_config ->{
+                Toast.makeText(this, "Clicou em Configuração", Toast.LENGTH_SHORT).show()
+            }
+        }
+        layoutMenuLateral.closeDrawer(GravityCompat.START)
+        return true
     }
 }

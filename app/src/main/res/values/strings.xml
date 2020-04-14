@@ -11,4 +11,6 @@
     <string name="empresa">Casdastrar Empresas</string>
     <string name="comunidade">Casdastrar Comunidades</string>
     <string name="bt_sair">SAIR</string>
+    <string name="nav_close">Fechado</string>
+    <string name="nav_pen">Abrir</string>
 </resources>
