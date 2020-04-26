@@ -14,10 +14,11 @@ class Perfil {
     var telefone1: String="";
     var telefone2: String="";
     var profissao: String="";
-    var img: String="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSWOVbLqMK3VoUfjO7YegNGQMmdWIJBSP5Xe28PtIhp8m3pK9mn&usqp=CAU";
+    var img: String="";
+
+
 
     override fun toString(): String{
-        return  "Perfil(nome='$nome')"
-        return  "Perfil(nome='$profissao')"
+        return  "Perfil(Nome='$nome')"
     }
 }

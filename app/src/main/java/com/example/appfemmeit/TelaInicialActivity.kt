@@ -40,45 +40,11 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         supportActionBar?.title = "Tela Incial"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-
-      /*   atualizando.visibility = View.INVISIBLE
-
-        //Toast.makeText(this, "Bem Vindo $nome", Toast.LENGTH_LONG).show()
-        textoInicial.setText("Seja Bem vindo " + nome)
-
-        bt_cadastrarMulher.setText(R.string.mulheres)
-        bt_cadastrarEmpresa.setText(R.string.empresa)
-        bt_cadastrarComunidades.setText(R.string.comunidade)
-        button_sair.setText(R.string.bt_sair)
-*/
-/*
-
-        //click do botão para sair
-        button_sair.setOnClickListener{
-            clickSair()
-        }
-
-        //click do botão para cadastro Mulheres
-        bt_cadastrarMulher.setOnClickListener{
-            clickMulheres()
-
-        }
-
-        bt_cadastrarEmpresa.setOnClickListener{
-            clickEmpresas()
-        }
-
-        bt_cadastrarComunidades.setOnClickListener{
-            clickComunidade()
-        }
-*/
-
         ConfiguraMenuLateral()
 
         recyclerPerfil?.layoutManager = LinearLayoutManager(context)
         recyclerPerfil?.itemAnimator = DefaultItemAnimator()
         recyclerPerfil?.setHasFixedSize(true)
-
 
     }
 
@@ -98,38 +64,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         Toast.makeText(context, "Clicou em ${perfil.nome}", Toast.LENGTH_SHORT).show()
 
     }
-
-    //funcao Botão comunidade para tela cadastro
-    fun clickComunidade(){
-        var intent = Intent(this , CadastroGeralActivity::class.java)
-        val parans = Bundle()
-        parans.putString("parametro","Comunidade")
-        intent.putExtras(parans)
-
-        startActivity(intent)
-    }
-
-    //funcao Botão empresas para tela cadastro
-    fun clickEmpresas(){
-        var intent = Intent(this , CadastroGeralActivity::class.java)
-
-        val parans = Bundle()
-        parans.putString("parametro","Empresa")
-        intent.putExtras(parans)
-
-        startActivity(intent)
-    }
-
-    //funcao Botão mulheres para tela cadastro
-    fun clickMulheres(){
-        var intent = Intent(this , CadastroGeralActivity::class.java)
-        val parans = Bundle()
-        parans.putString("parametro","Mulheres")
-        intent.putExtras(parans)
-
-        startActivity(intent)
-    }
-
 
     //funcao Botão Sair
     fun clickSair() {
@@ -161,21 +95,18 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val id = item?.itemId
-        if (id == R.id.action_buscar) {
-            Toast.makeText(this, "Clicou em buscar", Toast.LENGTH_LONG).show()
-/*
-        } else if (id == R.id.action_atualizar) {
-            Toast.makeText(this, "Clicou em atualizar", Toast.LENGTH_LONG).show()
-            atualizando.visibility = View.VISIBLE
-            Handler().postDelayed({
-                    atualizando.setVisibility(View.INVISIBLE)
-            }, 10000)
-*/
-        } else if (id == R.id.action_adiconar) {
+
+         if (id == R.id.action_adiconar) {
             Toast.makeText(this, "Clicou em Adiconar", Toast.LENGTH_LONG).show()
             //entra na tela de cadastro
           var intent = Intent(this , TelaCadastroActivity::class.java)
           startActivity(intent)
+         } else if (id == R.id.action_atualizar) {
+             Toast.makeText(this, "Clicou em atualizar", Toast.LENGTH_LONG).show()
+             /*atualizando.visibility = View.VISIBLE
+             Handler().postDelayed({
+                 atualizando.setVisibility(View.INVISIBLE)
+             }, 10000)*/
         } else if (id == android.R.id.home) {
             finish()
         }
@@ -214,7 +145,13 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
                 Toast.makeText(this, "Clicou em Localização", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_config ->{
-                Toast.makeText(this, "Clicou em Configuração", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Direcionando para Configuração", Toast.LENGTH_SHORT).show()
+                var intent = Intent(this , TelaConfigActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.nav_sairApp ->{
+                Toast.makeText(this, "Ate logo", Toast.LENGTH_SHORT).show()
+                clickSair()
             }
         }
         layoutMenuLateral.closeDrawer(GravityCompat.START)
