@@ -9,17 +9,23 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_tela_cadastro.*
 import kotlinx.android.synthetic.main.activity_tela_inicial.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val context: Context get() = this
+
+    private var perfils = listOf<Perfil>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +41,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
-         atualizando.visibility = View.INVISIBLE
+      /*   atualizando.visibility = View.INVISIBLE
 
         //Toast.makeText(this, "Bem Vindo $nome", Toast.LENGTH_LONG).show()
         textoInicial.setText("Seja Bem vindo " + nome)
@@ -44,7 +50,8 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         bt_cadastrarEmpresa.setText(R.string.empresa)
         bt_cadastrarComunidades.setText(R.string.comunidade)
         button_sair.setText(R.string.bt_sair)
-
+*/
+/*
 
         //click do botão para sair
         button_sair.setOnClickListener{
@@ -64,8 +71,31 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         bt_cadastrarComunidades.setOnClickListener{
             clickComunidade()
         }
+*/
 
         ConfiguraMenuLateral()
+
+        recyclerPerfil?.layoutManager = LinearLayoutManager(context)
+        recyclerPerfil?.itemAnimator = DefaultItemAnimator()
+        recyclerPerfil?.setHasFixedSize(true)
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        taskPerfil()
+    }
+
+    fun taskPerfil(){
+
+        perfils = PerfilService.getPerfil(context)
+        recyclerPerfil?.adapter = PerfilAdapter(perfils) {onClickPerfils(it)}
+    }
+
+
+    fun onClickPerfils(perfil: Perfil){
+        Toast.makeText(context, "Clicou em ${perfil.nome}", Toast.LENGTH_SHORT).show()
 
     }
 
@@ -133,12 +163,14 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         val id = item?.itemId
         if (id == R.id.action_buscar) {
             Toast.makeText(this, "Clicou em buscar", Toast.LENGTH_LONG).show()
+/*
         } else if (id == R.id.action_atualizar) {
             Toast.makeText(this, "Clicou em atualizar", Toast.LENGTH_LONG).show()
             atualizando.visibility = View.VISIBLE
             Handler().postDelayed({
                     atualizando.setVisibility(View.INVISIBLE)
             }, 10000)
+*/
         } else if (id == R.id.action_adiconar) {
             Toast.makeText(this, "Clicou em Adiconar", Toast.LENGTH_LONG).show()
             //entra na tela de cadastro
