@@ -1,6 +1,8 @@
 package com.example.appfemmeit
 
-class Perfil {
+import java.io.Serializable
+
+class Perfil: Serializable {
 
     var id: Long  = 0;
     var nome: String = "";

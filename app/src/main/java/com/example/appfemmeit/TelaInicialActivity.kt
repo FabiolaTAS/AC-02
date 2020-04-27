@@ -63,6 +63,9 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     fun onClickPerfils(perfil: Perfil){
         Toast.makeText(context, "Clicou em ${perfil.nome}", Toast.LENGTH_SHORT).show()
 
+        val intent = Intent(context, PerfilActivity::class.java)
+        intent.putExtra("perfil", perfil)
+        startActivity(intent)
     }
 
     //funcao Botão Sair
