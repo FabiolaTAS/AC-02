@@ -71,7 +71,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     //funcao Botão Sair
     fun clickSair() {
         val returnIntent = Intent()
-        returnIntent.putExtra("result", "Bye App FemmeIt")
         setResult(Activity.RESULT_OK, returnIntent)
         finish()
     }
