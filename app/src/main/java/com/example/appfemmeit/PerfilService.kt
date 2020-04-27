@@ -18,7 +18,6 @@ object PerfilService {
             p.profissao = "profissao $i"
             p.img = "https://img1.gratispng.com/20180326/cze/kisspng-women-s-empowerment-woman-international-women-s-da-women-day-5ab8d21502e510.9037538015220618450119.jpg"
 
-
             perfil.add(p)
         }
 

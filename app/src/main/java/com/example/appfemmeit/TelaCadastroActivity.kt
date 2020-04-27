@@ -30,11 +30,6 @@ class TelaCadastroActivity : AppCompatActivity() {
             Toast.makeText(this, "Clicou em buscar", Toast.LENGTH_LONG).show()
         } else if (id == R.id.action_atualizar) {
             Toast.makeText(this, "Clicou em atualizar", Toast.LENGTH_LONG).show()
-        } else if (id == R.id.action_adiconar) {
-            Toast.makeText(this, "Clicou em Adiconar", Toast.LENGTH_LONG).show()
-            //entra na tela de cadastro
-            var intent = Intent(this , TelaCadastroActivity::class.java)
-            startActivity(intent)
         } else if (id == android.R.id.home) {
             finish()
         }

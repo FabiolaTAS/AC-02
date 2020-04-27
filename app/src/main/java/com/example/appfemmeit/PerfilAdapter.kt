@@ -33,7 +33,6 @@ class PerfilAdapter (
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PefilViewHoder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.adapter_perfil, parent,false)
-
             val holder = PefilViewHoder(view)
 
             return holder
@@ -41,7 +40,6 @@ class PerfilAdapter (
 
         override fun onBindViewHolder(holder: PefilViewHoder, position: Int) {
             val context = holder.itemView.context
-
             val perfil = perfil[position]
 
             holder.cardNome.text = perfil.nome
@@ -53,15 +51,11 @@ class PerfilAdapter (
                     override fun onSuccess() {
                         holder.cardProgress.visibility = View.GONE
                     }
-
                     override fun onError() {
                         holder.cardProgress.visibility = View.GONE
                     }
                 }
             )
-
             holder.itemView.setOnClickListener{ onClick(perfil)}
         }
-
-
-    }
+   }
