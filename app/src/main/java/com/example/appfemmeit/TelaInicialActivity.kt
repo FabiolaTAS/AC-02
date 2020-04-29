@@ -34,7 +34,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
         //setando valores
         var args = intent.extras
-        val nome = args?.getString("nome")
 
         setSupportActionBar(toolbar)
         supportActionBar?.title = "Tela Incial"
