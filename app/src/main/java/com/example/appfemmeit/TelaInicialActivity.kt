@@ -55,8 +55,12 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
     fun taskPerfil(){
 
-        perfils = PerfilService.getPerfil(context)
-        recyclerPerfil?.adapter = PerfilAdapter(perfils) {onClickPerfils(it)}
+        Thread {
+            this.perfils = PerfilService.getPerfil(context)
+            runOnUiThread {
+                recyclerPerfil?.adapter = PerfilAdapter(perfils) { onClickPerfils(it)}
+            }
+        }.start()
     }
 
 

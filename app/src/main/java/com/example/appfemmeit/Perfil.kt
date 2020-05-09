@@ -6,7 +6,7 @@ class Perfil: Serializable {
 
     var id: Long  = 0;
     var nome: String = "";
-    var emaail: String ="";
+    var email: String ="";
     var cpf: String ="";
     var dtNascimento: String="";
     var linkedin: String="";
@@ -17,6 +17,7 @@ class Perfil: Serializable {
     var telefone2: String="";
     var profissao: String="";
     var img: String="";
+    var perfil: String="";
 
 
 
