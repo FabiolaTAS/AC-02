@@ -1,26 +1,23 @@
 package com.example.appfemmeit
 
 import android.content.Context
+import android.util.Log
+import java.net.URL
 
 object PerfilService {
 
+    //url do pythonanywhere
+    val host =""
+    val TAG = "API-FEMMEIT"
+
     fun getPerfil(context: Context):List<Perfil>{
-        val perfil = mutableListOf<Perfil>()
-        for (i in 1..10){
-            val p = Perfil();
-            p.nome = "Usuario $i"
-            p.cpf = "cpf $i"
-            p.emaail = "email $i"
-            p.dtNascimento = "dtNascimento $i"
-            p.linkedin = "linkedin $i"
-            p.login = "login $i"
-            p.telefone1 = "telefone1 $i"
-            p.profissao = "profissao $i"
-            p.img = "https://nailtime.com.br/wp-content/uploads/2018/11/00-Empoderamento-Feminino.jpg"
 
-            perfil.add(p)
-        }
+        val url = "$host/perfil"
+        val json = URL(url).readText()
 
-        return  perfil
+        Log.d(TAG, json)
+
+        return ArrayList()
+
     }
 }

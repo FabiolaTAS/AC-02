@@ -54,8 +54,12 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
     fun taskPerfil(){
 
-        perfils = PerfilService.getPerfil(context)
-        recyclerPerfil?.adapter = PerfilAdapter(perfils) {onClickPerfils(it)}
+        Thread {
+            this.perfils = PerfilService.getPerfil(context)
+            runOnUiThread {
+                recyclerPerfil?.adapter = PerfilAdapter(perfils) { onClickPerfils(it)}
+            }
+        }.start()
     }
 
 
@@ -70,7 +74,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     //funcao Botão Sair
     fun clickSair() {
         val returnIntent = Intent()
-        returnIntent.putExtra("result", "Bye App FemmeIt")
         setResult(Activity.RESULT_OK, returnIntent)
         finish()
     }
@@ -99,8 +102,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         val id = item?.itemId
 
          if (id == R.id.action_adiconar) {
-            Toast.makeText(this, "Clicou em Adiconar", Toast.LENGTH_LONG).show()
-            //entra na tela de cadastro
+          //entra na tela de cadastro
           var intent = Intent(this , TelaCadastroActivity::class.java)
           startActivity(intent)
          } else if (id == R.id.action_atualizar) {
