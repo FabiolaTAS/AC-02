@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_perfil.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -25,9 +26,7 @@ class PerfilActivity : AppCompatActivity() {
             perfil = intent.getSerializableExtra("perfil") as Perfil
 
         setSupportActionBar(toolbar)
-
         supportActionBar?.title = perfil?.nome
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         nomeUsuario.text = perfil?.nome
@@ -36,7 +35,6 @@ class PerfilActivity : AppCompatActivity() {
                 override fun onSuccess() {
                     imagemPerfil.visibility = View.GONE
                 }
-
                 override fun onError() {
                     imagemPerfil.visibility = View.GONE
                 }
@@ -44,19 +42,38 @@ class PerfilActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
+        menuInflater.inflate(R.menu.main_menu_perfeil, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val id = item?.itemId
-        if (id == R.id.action_buscar) {
-            Toast.makeText(this, "Clicou em buscar", Toast.LENGTH_LONG).show()
+
+        if (id == R.id.action_remover) {
+            AlertDialog.Builder(this)
+                .setTitle(R.string.app_name)
+                .setMessage("Deseja excluir o Usuario")
+                .setPositiveButton("Sim") { dialog, which ->
+                    dialog.dismiss()
+                    taskExcluir()
+                }.setNegativeButton("Não") { dialog, which ->
+                    dialog.dismiss()
+                }.create().show()
         } else if (id == android.R.id.home) {
             finish()
         }
         return super.onOptionsItemSelected(item)
     }
 
+    private fun taskExcluir() {
+        if (this.perfil != null && this.perfil is Perfil) {
+            Thread {
+                PerfilService.delete(this.perfil as Perfil)
+                runOnUiThread {
+                    finish()
+                }
+            }.start()
+        }
+    }
 }
 
