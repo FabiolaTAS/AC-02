@@ -13,4 +13,5 @@
     <string name="bt_sair">SAIR</string>
     <string name="nav_close">Fechado</string>
     <string name="nav_pen">Abrir</string>
+    <string name="action_remover">Remover</string>
 </resources>
