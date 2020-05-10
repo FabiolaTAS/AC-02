@@ -24,8 +24,9 @@ import kotlinx.android.synthetic.main.toolbar.*
 class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val context: Context get() = this
-
     private var perfils = listOf<Perfil>()
+    private var REQUEST_CADASTRO = 1
+    private var REQUEST_REMOVE= 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -107,16 +108,20 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
           startActivity(intent)
          } else if (id == R.id.action_atualizar) {
              Toast.makeText(this, "Clicou em atualizar", Toast.LENGTH_LONG).show()
-             /*atualizando.visibility = View.VISIBLE
-             Handler().postDelayed({
-                 atualizando.setVisibility(View.INVISIBLE)
-             }, 10000)*/
+            val intent = Intent(context, TelaCadastroActivity::class.java)
+             startActivityForResult(intent, REQUEST_CADASTRO)
         } else if (id == android.R.id.home) {
             finish()
         }
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == REQUEST_CADASTRO || requestCode == REQUEST_REMOVE ) {
+            // atualizar lista de perfil
+            taskPerfil()
+        }
+    }
 
     private fun ConfiguraMenuLateral(){
         var toggle = ActionBarDrawerToggle(
@@ -161,4 +166,5 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         layoutMenuLateral.closeDrawer(GravityCompat.START)
         return true
     }
+
 }
