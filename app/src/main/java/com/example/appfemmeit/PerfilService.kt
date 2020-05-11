@@ -5,18 +5,16 @@ import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import java.lang.reflect.Type
-import java.net.URL
 
 object PerfilService {
 
     //url do pythonanywhere
-    val host =""
+    val host ="https://fassuncao.pythonanywhere.com"
     val TAG = "API-FEMMEIT"
 
     fun getPerfil(context: Context):List<Perfil>{
         if(AndroidUtils.IsInternetOnline(context)) {
-            val url = "$host/perfil"
+            val url = "$host/perfils"
             val json = HttpHelper.get(url)
 
             Log.d(TAG, json)
@@ -32,13 +30,13 @@ object PerfilService {
     }
 
     fun save(perfil: Perfil): Response{
-        val json = HttpHelper.post("$host/perfil", perfil.toJson())
+        val json = HttpHelper.post("$host/perfils", perfil.toJson())
         return parserJson<Response>(json)
     }
 
     fun delete(perfil: Perfil): Response {
         Log.d(TAG, perfil.id.toString())
-        val url = "$host/perfil/${perfil.id}"
+        val url = "$host/perfils/${perfil.id}"
         val json = HttpHelper.delete(url)
         Log.d(TAG, json)
         return parserJson(json)

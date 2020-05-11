@@ -9,8 +9,6 @@ import java.io.IOException
 
 object HttpHelper {
 
-
-
     private val TAG = "HTTP_LMSApp"
     private val LOG_ON = true
     val JSON = MediaType.parse("application/json; charset=utf-8")

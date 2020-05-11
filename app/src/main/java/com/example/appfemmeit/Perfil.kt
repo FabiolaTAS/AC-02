@@ -3,27 +3,25 @@ package com.example.appfemmeit
 import com.google.gson.GsonBuilder
 import java.io.Serializable
 
-class Perfil: Serializable {
+class Perfil : Serializable {
 
-    var id: Long  = 0
-    var nome = ""
     var email = ""
-    var cpf = ""
-    var dtNascimento =""
+    var img = ""
+    var id: Long = 0
     var linkedin = ""
-    var gitHub: String="";
-    var login: String="";
-    var senha: String="";
-    var telefone1: String="";
-    var telefone2: String="";
-    var profissao: String="";
-    var img: String="";
-    var perfil: String="";
+    var nome = ""
+    var telefone1 = ""
+    var perfil = ""
+    var cpf = ""
+    var dtNascimento = ""
+    var gitHubg = ""
+    var login = ""
+    var senha = ""
+    var telefone2 = ""
+    var profissao = ""
 
-
-
-    override fun toString(): String{
-        return  "Perfil(Nome='$nome')"
+    override fun toString(): String {
+        return "Usuario (Nome='$nome')"
     }
 
     fun toJson(): String {

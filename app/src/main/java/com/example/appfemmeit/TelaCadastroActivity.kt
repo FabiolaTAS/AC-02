@@ -1,11 +1,10 @@
 package com.example.appfemmeit
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_perfil.*
 import kotlinx.android.synthetic.main.activity_tela_cadastro.*
 
@@ -19,7 +18,7 @@ class TelaCadastroActivity : AppCompatActivity() {
         ///seta de voltar na toolbar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        button_salvar.setOnClickListener{
+        button_salvar.setOnClickListener {
             val perfil = Perfil()
             perfil.nome = nomeUsuario.text.toString()
             perfil.email = email.text.toString()
@@ -29,6 +28,7 @@ class TelaCadastroActivity : AppCompatActivity() {
             taskAtualizar(perfil)
         }
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -45,7 +45,7 @@ class TelaCadastroActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-     private fun taskAtualizar(perfil: Perfil) {
+    private fun taskAtualizar(perfil: Perfil) {
         Thread {
             PerfilService.save(perfil)
             runOnUiThread {
