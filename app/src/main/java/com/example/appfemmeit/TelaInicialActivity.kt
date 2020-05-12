@@ -26,7 +26,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     private val context: Context get() = this
     private var perfils = listOf<Perfil>()
     private var REQUEST_CADASTRO = 1
-    private var REQUEST_REMOVE= 2
+    private var REQUEST_REMOVE = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,18 +53,32 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         taskPerfil()
     }
 
-    fun taskPerfil(){
+    fun taskPerfil() {
 
         Thread {
             this.perfils = PerfilService.getPerfil(context)
             runOnUiThread {
-                recyclerPerfil?.adapter = PerfilAdapter(perfils) { onClickPerfils(it)}
+                recyclerPerfil?.adapter = PerfilAdapter(perfils) { onClickPerfils(it) }
+                enviaNotificacao(perfils.get(2))
             }
         }.start()
     }
 
 
-    fun onClickPerfils(perfil: Perfil){
+    fun enviaNotificacao(perfil: Perfil) {
+        val intent = Intent(this, PerfilActivity::class.java)
+        intent.putExtra("perfil", perfil)
+        NotificationUtil.create(
+            this,
+            1,
+            intent,
+            "FemmeIt",
+            "Um novo Usuario foi cadastrado, verifique o perfil dele ${perfil.nome}"
+        )
+
+    }
+
+    fun onClickPerfils(perfil: Perfil) {
         Toast.makeText(context, "Clicou em ${perfil.nome}", Toast.LENGTH_SHORT).show()
 
         val intent = Intent(context, PerfilActivity::class.java)
@@ -83,7 +97,8 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         // infla o menu com os botões da ActionBar
         menuInflater.inflate(R.menu.menu_main, menu)
         // vincular evento de buscar
-        (menu?.findItem(R.id.action_buscar)?.actionView as SearchView).setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        (menu?.findItem(R.id.action_buscar)?.actionView as SearchView).setOnQueryTextListener(object :
+            SearchView.OnQueryTextListener {
 
             override fun onQueryTextChange(newText: String): Boolean {
                 Toast.makeText(context, newText, Toast.LENGTH_SHORT).show()
@@ -102,14 +117,14 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val id = item?.itemId
 
-         if (id == R.id.action_adiconar) {
-          //entra na tela de cadastro
-          var intent = Intent(this , TelaCadastroActivity::class.java)
-          startActivity(intent)
-         } else if (id == R.id.action_atualizar) {
-             Toast.makeText(this, "Clicou em atualizar", Toast.LENGTH_LONG).show()
+        if (id == R.id.action_adiconar) {
+            //entra na tela de cadastro
+            var intent = Intent(this, TelaCadastroActivity::class.java)
+            startActivity(intent)
+        } else if (id == R.id.action_atualizar) {
+            Toast.makeText(this, "Clicou em atualizar", Toast.LENGTH_LONG).show()
             val intent = Intent(context, TelaCadastroActivity::class.java)
-             startActivityForResult(intent, REQUEST_CADASTRO)
+            startActivityForResult(intent, REQUEST_CADASTRO)
         } else if (id == android.R.id.home) {
             finish()
         }
@@ -117,13 +132,13 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == REQUEST_CADASTRO || requestCode == REQUEST_REMOVE ) {
+        if (requestCode == REQUEST_CADASTRO || requestCode == REQUEST_REMOVE) {
             // atualizar lista de perfil
             taskPerfil()
         }
     }
 
-    private fun ConfiguraMenuLateral(){
+    private fun ConfiguraMenuLateral() {
         var toggle = ActionBarDrawerToggle(
             this,
             layoutMenuLateral,
@@ -140,25 +155,25 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId){
-            R.id.nav_perfil ->{
+        when (item.itemId) {
+            R.id.nav_perfil -> {
                 Toast.makeText(this, "Clicou em perfil", Toast.LENGTH_SHORT).show()
             }
-            R.id.nav_chat ->{
+            R.id.nav_chat -> {
                 Toast.makeText(this, "Clicou em CHAT", Toast.LENGTH_SHORT).show()
             }
-            R.id.nav_forum ->{
+            R.id.nav_forum -> {
                 Toast.makeText(this, "Clicou em Forum", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_localizacao -> {
                 Toast.makeText(this, "Clicou em Localização", Toast.LENGTH_SHORT).show()
             }
-            R.id.nav_config ->{
+            R.id.nav_config -> {
                 Toast.makeText(this, "Direcionando para Configuração", Toast.LENGTH_SHORT).show()
-                var intent = Intent(this , TelaConfigActivity::class.java)
+                var intent = Intent(this, TelaConfigActivity::class.java)
                 startActivity(intent)
             }
-            R.id.nav_sairApp ->{
+            R.id.nav_sairApp -> {
                 Toast.makeText(this, "Ate logo", Toast.LENGTH_SHORT).show()
                 clickSair()
             }
