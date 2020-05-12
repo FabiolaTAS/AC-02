@@ -37,5 +37,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'androidx.mediarouter:mediarouter:1.1.0'
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.google.firebase:firebase-messaging:17.3.2'
 
 }
+
+apply plugin: 'com.google.gms.google-services'
+
+com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true

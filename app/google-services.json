@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "656136128319",
+    "firebase_url": "https://femmeit-app.firebaseio.com",
+    "project_id": "femmeit-app",
+    "storage_bucket": "femmeit-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656136128319:android:503971f7b1e50a8a4c758a",
+        "android_client_info": {
+          "package_name": "com.example.appfemmeit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "656136128319-j21p5s31ctbkel7olpdpd5f3157bhr5d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcB_Cipc5ZwDGd1cYGKpcTXPg8cE1xChg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "656136128319-j21p5s31ctbkel7olpdpd5f3157bhr5d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
