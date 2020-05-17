@@ -56,7 +56,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     fun taskPerfil() {
 
         Thread {
-            this.perfils = PerfilService.getPerfil(context)
+            this.perfils = PerfilService.getPerfils(context)
             runOnUiThread {
                 recyclerPerfil?.adapter = PerfilAdapter(perfils) { onClickPerfils(it) }
                 enviaNotificacao(perfils.get(2))

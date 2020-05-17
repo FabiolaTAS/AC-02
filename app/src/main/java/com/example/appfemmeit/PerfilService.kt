@@ -14,17 +14,37 @@ object PerfilService {
     val TAG = "API-FEMMEIT"
 
 
+    fun getPerfils(context: Context): List<Perfil> {
+        var perfils = ArrayList<Perfil>()
+        if (AndroidUtils.IsInternetOnline()) {
+            val url = "$host/perfils"
+            val json = HttpHelper.get(url)
+            perfils = parserJson(json)
+            // salvar offline
+            for (d in perfils) {
+                saveOffiline(d)
+            }
+            return perfils
+        } else {
+            val dao = DatabaseManager.getPerfilDAO()
+            val perfils = dao.findAll()
+            return perfils
+        }
+
+    }
+
+
     fun getPerfil(context: Context, id: Long): Perfil? {
         if (AndroidUtils.IsInternetOnline()) {
             val url = "$host/perfils/${id}"
             val json = HttpHelper.get(url)
-            val disciplina = parserJson<Perfil>(json)
+            val perfil = parserJson<Perfil>(json)
 
-            return disciplina
+            return perfil
         } else {
             val dao = DatabaseManager.getPerfilDAO()
-            val disciplina = dao.getById(id)
-            return disciplina
+            val perfil = dao.getById(id)
+            return perfil
         }
 
     }
@@ -58,16 +78,16 @@ object PerfilService {
         }
     }
 
-    fun delete(disciplina: Perfil): Response {
+    fun delete(perfil: Perfil): Response {
         if (AndroidUtils.IsInternetOnline()) {
-            val url = "$host/perfils/${disciplina.id}"
+            val url = "$host/perfils/${perfil.id}"
             val json = HttpHelper.delete(url)
 
             return parserJson(json)
         } else {
             val dao = DatabaseManager.getPerfilDAO()
-            dao.delete(disciplina)
-            return Response("OK",  "Dados salvos localmente")
+            dao.delete(perfil)
+            return Response("OK", "Dados salvos localmente")
         }
 
     }
