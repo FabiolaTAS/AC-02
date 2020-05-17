@@ -120,7 +120,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         if (id == R.id.action_adiconar) {
             //entra na tela de cadastro
             var intent = Intent(this, TelaCadastroActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, REQUEST_CADASTRO)
         } else if (id == R.id.action_atualizar) {
             Toast.makeText(this, "Clicou em atualizar", Toast.LENGTH_LONG).show()
             val intent = Intent(context, TelaCadastroActivity::class.java)
