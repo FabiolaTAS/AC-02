@@ -31,7 +31,6 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
 
     private fun showNotification(mensagemRemota: RemoteMessage) {
 
-
         val intent = Intent(this, PerfilActivity::class.java)
 
         val titulo = mensagemRemota?.notification?.title?: getString(R.string.app_name)
