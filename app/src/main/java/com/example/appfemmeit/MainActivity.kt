@@ -25,7 +25,7 @@ class MainActivity : DebugActivity() {
 
         var lembrar = Prefs.    getBoolean("lembrar")
         var usuario = Prefs.getStrin("lembrarnome")
-        var senha = Prefs.getStrin("lembrasenha")
+        var senha = Prefs.getStrin("lembrarsenha")
         label_user.setText(usuario)
         label_password.setText(senha)
         check_lembrar.isChecked = lembrar
