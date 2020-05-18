@@ -37,7 +37,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         var args = intent.extras
 
         setSupportActionBar(toolbar)
-        supportActionBar?.title = "Tela Incial"
+        supportActionBar?.title = "Usuarios Cadastrados"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         ConfiguraMenuLateral()
@@ -159,20 +159,14 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
             R.id.nav_perfil -> {
                 Toast.makeText(this, "Clicou em perfil", Toast.LENGTH_SHORT).show()
             }
-            R.id.nav_chat -> {
-                Toast.makeText(this, "Clicou em CHAT", Toast.LENGTH_SHORT).show()
-            }
+
             R.id.nav_forum -> {
                 Toast.makeText(this, "Clicou em Forum", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_localizacao -> {
                 Toast.makeText(this, "Clicou em Localização", Toast.LENGTH_SHORT).show()
             }
-            R.id.nav_config -> {
-                Toast.makeText(this, "Direcionando para Configuração", Toast.LENGTH_SHORT).show()
-                var intent = Intent(this, TelaConfigActivity::class.java)
-                startActivity(intent)
-            }
+
             R.id.nav_sairApp -> {
                 Toast.makeText(this, "Ate logo", Toast.LENGTH_SHORT).show()
                 clickSair()
