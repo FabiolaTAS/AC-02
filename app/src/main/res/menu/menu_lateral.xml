@@ -17,11 +17,11 @@
             android:title="Fórum"
             />
 
-        <item
+ <!--       <item
             android:id="@+id/nav_chat"
             android:icon="@drawable/ic_chat_black"
             android:title="Chat"
-            />
+            />-->
 
         <item
             android:id="@+id/nav_localizacao"
@@ -29,11 +29,11 @@
             android:title="Localização"
             />
 
-        <item
+     <!--   <item
             android:id="@+id/nav_config"
             android:icon="@drawable/ic_configuracoes_black"
             android:title="Configurações"
-            />
+            />-->
 
         <item
             android:id="@+id/nav_sairApp"
