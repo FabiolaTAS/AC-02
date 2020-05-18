@@ -15,7 +15,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".PerfilActivity"
             android:theme="@style/AppTheme.Toolbar"></activity>
-        <activity android:name=".TelaConfigActivity" />
         <activity android:name=".TelaCadastroActivity" />
         <activity
             android:name=".TelaInicialActivity"
