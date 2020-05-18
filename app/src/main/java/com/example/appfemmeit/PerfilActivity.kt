@@ -30,12 +30,9 @@ class PerfilActivity : AppCompatActivity() {
         nomeUsuario.text = perfil?.nome
         Picasso.with(this).load(perfil?.img).fit().into(imagemPerfil,
             object : com.squareup.picasso.Callback {
-                override fun onSuccess() {
-                    imagemPerfil.visibility = View.GONE
-                }
-                override fun onError() {
-                    imagemPerfil.visibility = View.GONE
-                }
+                override fun onSuccess() {}
+
+                override fun onError() {}
             })
     }
 
