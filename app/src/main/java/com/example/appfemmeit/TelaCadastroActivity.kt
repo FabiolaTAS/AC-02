@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_perfil.*
 import kotlinx.android.synthetic.main.activity_tela_cadastro.*
-import kotlinx.android.synthetic.main.menu_lateral_cabecalho.*
+
 
 class TelaCadastroActivity : AppCompatActivity() {
 
