@@ -6,128 +6,72 @@
     android:layout_height="match_parent"
     tools:context=".TelaCadastroActivity">
 
-    <TextView
-        android:id="@+id/nome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="NOME"
-        app:layout_constraintBottom_toTopOf="@+id/label_nome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
     <EditText
         android:id="@+id/label_nome"
-        android:layout_width="302dp"
-        android:layout_height="42dp"
+        android:layout_width="362dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="Nome completo"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.075" />
-
-    <TextView
-        android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="E-MAIL"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.158"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.186" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/label_email"
-        android:layout_width="302dp"
-        android:layout_height="42dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.221" />
-
-    <TextView
-        android:id="@+id/telefone"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="TELEFONE"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.327" />
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/label_telefone"
+        app:layout_constraintEnd_toEndOf="@+id/label_nome"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/label_nome"
+        app:layout_constraintTop_toBottomOf="@+id/label_nome"
+        app:layout_constraintVertical_bias="0.0" />
+
 
     <EditText
         android:id="@+id/label_telefone"
-        android:layout_width="302dp"
+        android:layout_width="0dp"
         android:layout_height="42dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
+        android:hint="Telefone"
         android:inputType="phone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/telefone"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/dtNascimento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DATA DE NASCIMENTO"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.205"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.467" />
+        app:layout_constraintEnd_toEndOf="@+id/label_email"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/label_email"
+        app:layout_constraintTop_toBottomOf="@+id/label_email" />
 
     <EditText
         android:id="@+id/label_nascimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:ems="10"
+        android:hint="Data de Nascimento"
         android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.277"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dtNascimento"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-    <TextView
-        android:id="@+id/img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="IMAGEM"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.151"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.595" />
+        app:layout_constraintEnd_toEndOf="@+id/label_telefone"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/label_telefone"
+        app:layout_constraintTop_toBottomOf="@+id/label_telefone" />
 
     <EditText
         android:id="@+id/label_img"
-        android:layout_width="295dp"
+        android:layout_width="0dp"
         android:layout_height="39dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.465"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img" />
+        android:hint="Imagem de cadastro"
+        app:layout_constraintEnd_toEndOf="@+id/label_telefone"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/label_telefone"
+        app:layout_constraintTop_toBottomOf="@+id/label_nascimento" />
 
     <Button
         android:id="@+id/button_salvar"
@@ -139,5 +83,32 @@
         app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.871" />
+        app:layout_constraintVertical_bias="0.946" />
+
+    <EditText
+        android:id="@+id/perfil_cadastro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Perfil"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/label_img"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/label_img"
+        app:layout_constraintTop_toBottomOf="@+id/label_img" />
+
+    <EditText
+        android:id="@+id/linkedin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Linkedin"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/button_salvar"
+        app:layout_constraintEnd_toEndOf="@+id/perfil_cadastro"
+        app:layout_constraintStart_toStartOf="@+id/perfil_cadastro"
+        app:layout_constraintTop_toBottomOf="@+id/perfil_cadastro"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,20 +9,21 @@ import java.io.Serializable
 class Perfil : Serializable {
 
     var email = ""
-    var img = ""
     @PrimaryKey
     var id: Long = 0
+    var img = ""
     var linkedin = ""
     var nome = ""
-    var telefone1 = ""
     var perfil = ""
-    var cpf = ""
-    var dtNascimento = ""
-    var gitHubg = ""
-    var login = ""
-    var senha = ""
-    var telefone2 = ""
-    var profissao = ""
+    var telefone1 = ""
+
+    //var cpf = ""
+   // var dtNascimento = ""
+    //var gitHubg = ""
+   // var login = ""
+    //var senha = ""
+    //var telefone2 = ""
+    //var profissao = ""
 
     override fun toString(): String {
         return "Usuario (Nome='$nome')"

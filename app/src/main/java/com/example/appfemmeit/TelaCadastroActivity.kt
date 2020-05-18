@@ -21,11 +21,13 @@ class TelaCadastroActivity : AppCompatActivity() {
 
         button_salvar.setOnClickListener {
             val perfil = Perfil()
-            perfil.nome = nomeUsuario.text.toString()
-            perfil.email = email.text.toString()
-            perfil.dtNascimento = label_nascimento.text.toString()
+            perfil.nome = label_nome.text.toString()
+            perfil.email = label_email.text.toString()
+          //  perfil.dtNascimento = label_nascimento.text.toString()
             perfil.telefone1 = label_telefone.text.toString()
             perfil.img = label_img.text.toString()
+            perfil.linkedin = linkedin.text.toString()
+            perfil.perfil = perfil_cadastro.text.toString()
 
             taskAtualizar(perfil)
         }
