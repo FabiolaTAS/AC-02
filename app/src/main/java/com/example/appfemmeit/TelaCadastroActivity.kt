@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_perfil.*
 import kotlinx.android.synthetic.main.activity_tela_cadastro.*
+import kotlinx.android.synthetic.main.menu_lateral_cabecalho.*
 
 class TelaCadastroActivity : AppCompatActivity() {
 
@@ -24,6 +25,7 @@ class TelaCadastroActivity : AppCompatActivity() {
             perfil.email = email.text.toString()
             perfil.dtNascimento = label_nascimento.text.toString()
             perfil.telefone1 = label_telefone.text.toString()
+            perfil.img = label_img.text.toString()
 
             taskAtualizar(perfil)
         }
