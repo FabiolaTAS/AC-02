@@ -73,7 +73,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
             1,
             intent,
             "FemmeIt",
-            "Um novo Usuario foi cadastrado, verifique o perfil dele ${perfil.nome}"
+            "Um novo Usuario foi cadastrado, verifique o perfil dela ${perfil.nome}"
         )
 
     }
@@ -175,5 +175,4 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         layoutMenuLateral.closeDrawer(GravityCompat.START)
         return true
     }
-
 }

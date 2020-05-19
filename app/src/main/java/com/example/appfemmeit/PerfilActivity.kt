@@ -6,8 +6,8 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_perfil.*
+import kotlinx.android.synthetic.main.menu_lateral_cabecalho.*
 import kotlinx.android.synthetic.main.toolbar.*
 
 class PerfilActivity : AppCompatActivity() {
@@ -27,12 +27,18 @@ class PerfilActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         nomeUsuario.text = perfil?.nome
-        Picasso.with(this).load(perfil?.img).fit().into(imagemPerfil,
+        linkedin_perfil.text = perfil?.linkedin
+        imagemPerfil.setImageResource(R.drawable.femmeit_user)
+        email_perfil.text = perfil?.email
+        telefone1_perfil.text = perfil?.telefone1
+
+
+       /* Picasso.with(this).load(perfil?.img).fit().into(imagemPerfil,
             object : com.squareup.picasso.Callback {
                 override fun onSuccess() {}
 
                 override fun onError() {}
-            })
+            })*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
