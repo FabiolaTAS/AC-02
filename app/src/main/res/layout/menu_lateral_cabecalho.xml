@@ -4,24 +4,23 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="160dp"
-    android:background="@drawable/menu_fundo_org"
+    android:background="@drawable/planofundo_app"
     android:layout_gravity="bottom"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:padding="16dp">
-    
+
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/imagem_user"
-        app:srcCompat="@mipmap/ic_launcher_round"
+        android:layout_width="86dp"
+        android:layout_height="105dp"
         android:paddingTop="16dp"
-        />
+        app:srcCompat="@drawable" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nome Usuário"
         android:paddingTop="16dp"
+        android:id="@+id/menu_cabecalho_nome_user"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         />
 

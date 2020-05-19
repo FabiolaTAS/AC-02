@@ -12,8 +12,6 @@ class MainActivity : DebugActivity() {
         setContentView(R.layout.logincontraint)
         logo_App.setImageResource(R.drawable.femmeit)
         mensagem_login.setText(R.string.str_login)
-        user.setText(R.string.user)
-        password.setText(R.string.password)
         button_login.setText(R.string.button_login)
 
 
