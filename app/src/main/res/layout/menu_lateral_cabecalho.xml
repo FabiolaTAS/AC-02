@@ -11,10 +11,10 @@
 
     <ImageView
         android:id="@+id/imagem_user"
-        android:layout_width="86dp"
+        android:layout_width="114dp"
         android:layout_height="105dp"
         android:paddingTop="16dp"
-        app:srcCompat="@drawable" />
+        app:srcCompat="@mipmap/ic_launcher_user_menu" />
 
     <TextView
         android:layout_width="match_parent"
