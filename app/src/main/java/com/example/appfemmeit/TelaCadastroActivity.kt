@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
 import kotlinx.android.synthetic.main.activity_perfil.*
 import kotlinx.android.synthetic.main.activity_tela_cadastro.*
 
@@ -21,11 +22,13 @@ class TelaCadastroActivity : AppCompatActivity() {
 
         button_salvar.setOnClickListener {
             val perfil = Perfil()
-            perfil.nome = nomeUsuario.text.toString()
-            perfil.email = email.text.toString()
-            perfil.dtNascimento = label_nascimento.text.toString()
-            perfil.telefone1 = label_telefone.text.toString()
-            perfil.img = label_img.text.toString()
+            perfil.nome = nome.editText.toString()
+            perfil.email = email.editText.toString()
+            perfil.dtNascimento = dtNascimento.editText.toString()
+            perfil.telefone1 = telefone.editText.toString()
+            perfil.profissao = profissao.editText.toString()
+            perfil.login = login.editText.toString()
+            perfil.senha = senha.editText.toString()
 
             taskAtualizar(perfil)
         }
