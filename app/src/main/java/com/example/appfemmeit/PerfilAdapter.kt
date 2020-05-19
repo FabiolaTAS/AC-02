@@ -17,15 +17,17 @@ class PerfilAdapter(
 
     class PefilViewHoder(view: View) : RecyclerView.ViewHolder(view) {
         val cardNome: TextView
-        val card_img: ImageView
+        //val card_img: ImageView
         val cardProgress: ProgressBar
         val cardView: CardView
+        val cardProfissao : TextView
 
         init {
             cardNome = view.findViewById<TextView>(R.id.cardNome)
-            card_img = view.findViewById<ImageView>(R.id.card_img)
+//            card_img = view.findViewById<ImageView>(R.id.card_img)
             cardProgress = view.findViewById<ProgressBar>(R.id.cardProgress)
             cardView = view.findViewById<CardView>(R.id.card_perfil)
+            cardProfissao = view.findViewById(R.id.card_profissao)
         }
     }
 
@@ -44,9 +46,10 @@ class PerfilAdapter(
         val perfil = perfil[position]
 
         holder.cardNome.text = perfil.nome
-        holder.cardProgress.visibility = View.VISIBLE
+        holder.cardProfissao.text = perfil.profissao
+      //  holder.cardProgress.visibility = View.VISIBLE
 
-        Picasso.with(context).load(perfil.img).fit().into(
+        /*Picasso.with(context).load(perfil.img).fit().into(
             holder.card_img,
             object : com.squareup.picasso.Callback {
                 override fun onSuccess() {
@@ -57,7 +60,7 @@ class PerfilAdapter(
                     holder.cardProgress.visibility = View.GONE
                 }
             }
-        )
+        )*/
         holder.itemView.setOnClickListener { onClick(perfil) }
     }
 }
