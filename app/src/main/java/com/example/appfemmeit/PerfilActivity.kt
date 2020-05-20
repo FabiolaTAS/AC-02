@@ -26,11 +26,11 @@ class PerfilActivity : AppCompatActivity() {
         supportActionBar?.title = perfil?.nome
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        nomeUsuario.text = perfil?.nome
-        linkedin_perfil.text = perfil?.linkedin
+        nomeUsuario.text = "Nome: "+perfil?.nome
+        linkedin_perfil.text = "Linkedin: "+perfil?.linkedin
         imagemPerfil.setImageResource(R.drawable.femmeit_user)
-        email_perfil.text = perfil?.email
-        telefone1_perfil.text = perfil?.telefone1
+        email_perfil.text = "E-mail: "+perfil?.email
+        telefone1_perfil.text = "Telefone: "+perfil?.telefone1
 
 
        /* Picasso.with(this).load(perfil?.img).fit().into(imagemPerfil,
