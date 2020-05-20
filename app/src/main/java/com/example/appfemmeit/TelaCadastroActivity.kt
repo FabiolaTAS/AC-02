@@ -1,11 +1,15 @@
 package com.example.appfemmeit
 
 import android.os.Bundle
+import android.view.FocusFinder
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_perfil.*
 import kotlinx.android.synthetic.main.activity_tela_cadastro.*
 
@@ -19,6 +23,67 @@ class TelaCadastroActivity : AppCompatActivity() {
 
         ///seta de voltar na toolbar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        //validação campo nome
+        val textInputLayoutnome = findViewById<TextInputLayout>(R.id.nome)
+        val editTextcamponomecompleto = textInputLayoutnome.editText
+        var stringnome = editTextcamponomecompleto?.text.toString()
+
+        if (stringnome.isEmpty()) {
+            editTextcamponomecompleto?.setError("Campo Obrigatorio")
+            editTextcamponomecompleto?.requestFocus()
+        }
+
+        //validação campo profissão
+        val textInputLayoutprofissao = findViewById<TextInputLayout>(R.id.profissao)
+        val editTextcampoprofissao = textInputLayoutprofissao.editText
+        var stringprofissao = editTextcampoprofissao?.text.toString()
+
+        if (stringprofissao.isEmpty()) {
+            editTextcampoprofissao?.setError("Campo Obrigatorio")
+            textInputLayoutprofissao?.requestFocus()
+        }
+
+        //validação campo telefone
+        val textInputLayouttelefone = findViewById<TextInputLayout>(R.id.telefone)
+        val editTextcampotelefone = textInputLayouttelefone.editText
+        var stringtelefone = editTextcampotelefone?.text.toString()
+
+        if (stringtelefone.isEmpty()) {
+            editTextcampotelefone?.setError("Campo Obrigatorio")
+            textInputLayouttelefone?.requestFocus()
+        }
+
+        //validação email
+        val textInputLayoutemail = findViewById<TextInputLayout>(R.id.email)
+        val editTextcampoemail = textInputLayoutemail.editText
+        var stringemail = editTextcampoemail?.text.toString()
+
+        if (stringemail.isEmpty()) {
+            editTextcampoemail?.setError("Campo Obrigatorio")
+            textInputLayoutemail?.requestFocus()
+        }
+
+        //validaçao login
+        val textInputLayoutlogin = findViewById<TextInputLayout>(R.id.login)
+        val editTextcampologin = textInputLayoutlogin.editText
+        var stringlogin = editTextcampologin?.text.toString()
+
+        if (stringlogin.isEmpty()) {
+            editTextcampologin?.setError("Campo Obrigatorio")
+            textInputLayoutlogin?.requestFocus()
+        }
+
+        //validação senha
+        val textInputLayoutsenha = findViewById<TextInputLayout>(R.id.senha)
+        val editTextcamposenha = textInputLayoutsenha.editText
+        var stringsenha = editTextcamposenha?.text.toString()
+
+        if (stringsenha.isEmpty()) {
+            editTextcamposenha?.setError("Campo Obrigatorio")
+            textInputLayoutsenha?.requestFocus()
+        }
+
 
         button_salvar.setOnClickListener {
             val perfil = Perfil()
