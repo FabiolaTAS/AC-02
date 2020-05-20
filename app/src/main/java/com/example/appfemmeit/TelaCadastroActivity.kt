@@ -64,7 +64,7 @@ class TelaCadastroActivity : AppCompatActivity() {
     }
 
     private fun configuraLogin(): EditText? {
-        val textInputLayoutlogin = findViewById<TextInputLayout>(R.id.login)
+        val textInputLayoutlogin = findViewById<TextInputLayout>(R.id.login_cadastro)
         val editTextcampologin = textInputLayoutlogin.editText
         adicionaValidação(textInputLayoutlogin)
         return editTextcampologin
@@ -78,7 +78,7 @@ class TelaCadastroActivity : AppCompatActivity() {
     }
 
     private fun configuraTelefone(): EditText? {
-        val textInputLayouttelefone = findViewById<TextInputLayout>(R.id.telefone)
+        val textInputLayouttelefone = findViewById<TextInputLayout>(R.id.telefone_cadastro)
         val editTextcampotelefone = textInputLayouttelefone.editText
         adicionaValidação(textInputLayouttelefone)
         return editTextcampotelefone
@@ -86,14 +86,14 @@ class TelaCadastroActivity : AppCompatActivity() {
 
     private fun configuraProfissao(): EditText? {
         //validação campo profissão
-        val textInputLayoutprofissao = findViewById<TextInputLayout>(R.id.profissao)
+        val textInputLayoutprofissao = findViewById<TextInputLayout>(R.id.profissao_cadastro)
         val editTextcampoprofissao = textInputLayoutprofissao.editText
         adicionaValidação(textInputLayoutprofissao)
         return editTextcampoprofissao
     }
 
     private fun configuraNomeCompleto(): EditText? {
-        val textInputLayoutnome = findViewById<TextInputLayout>(R.id.nome)
+        val textInputLayoutnome = findViewById<TextInputLayout>(R.id.nome_cadastro)
         val editTextcamponomecompleto = textInputLayoutnome.editText
         adicionaValidação(textInputLayoutnome)
         return editTextcamponomecompleto
@@ -121,21 +121,21 @@ class TelaCadastroActivity : AppCompatActivity() {
     }
 
     private fun configuraPerfil(): EditText? {
-        val textInputLayoutPerfil = findViewById<TextInputLayout>(R.id.cpf_cadastro)
+        val textInputLayoutPerfil = findViewById<TextInputLayout>(R.id.perfilCAdastro)
         val editTextcamponomePerfil = textInputLayoutPerfil.editText
         adicionaValidação(textInputLayoutPerfil)
         return editTextcamponomePerfil
     }
 
     private fun configuraDataNas(): EditText? {
-        val textInputLayoutDataNas = findViewById<TextInputLayout>(R.id.cpf_cadastro)
+        val textInputLayoutDataNas = findViewById<TextInputLayout>(R.id.dtnascimentoCadastro)
         val editTextcamponomeDataNas = textInputLayoutDataNas.editText
         //  adicionaValidação(textInputLayoutDataNas)
         return editTextcamponomeDataNas
     }
 
     private fun configuraTelSeg(): EditText? {
-        val textInputLayoutTelSeg = findViewById<TextInputLayout>(R.id.cpf_cadastro)
+        val textInputLayoutTelSeg = findViewById<TextInputLayout>(R.id.telefoneSecundario)
         val editTextcamponomeTelSeg = textInputLayoutTelSeg.editText
         //  adicionaValidação(textInputLayoutPerfil)
         return editTextcamponomeTelSeg
