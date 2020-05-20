@@ -16,14 +16,13 @@ class Perfil : Serializable {
     var nome = ""
     var perfil = ""
     var telefone1 = ""
-
-    //var cpf = ""
-   // var dtNascimento = ""
-    //var gitHubg = ""
-   // var login = ""
-    //var senha = ""
-    //var telefone2 = ""
-    //var profissao = ""
+    var cpf = ""
+    var dtNascimento = ""
+    var gitHubg = ""
+    var login = ""
+    var senha = ""
+    var telefone2 = ""
+    var profissao = ""
 
     override fun toString(): String {
         return "Usuario (Nome='$nome')"
