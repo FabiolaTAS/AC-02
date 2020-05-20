@@ -31,7 +31,7 @@ class PerfilActivity : AppCompatActivity() {
         imagemPerfil.setImageResource(R.drawable.femmeit_user)
         email_perfil.text = "E-mail: "+perfil?.email
         telefone1_perfil.text = "Telefone: "+perfil?.telefone1
-
+       // git_hub.text = "GitHub: "+perfil?.gitHub
 
        /* Picasso.with(this).load(perfil?.img).fit().into(imagemPerfil,
             object : com.squareup.picasso.Callback {

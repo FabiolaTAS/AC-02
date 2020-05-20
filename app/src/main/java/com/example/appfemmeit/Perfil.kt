@@ -18,7 +18,7 @@ class Perfil : Serializable {
     var perfil = ""
     var cpf = ""
     var dtNascimento = ""
-    var gitHubg = ""
+    var gitHub = ""
     var login = ""
     var senha = ""
     var telefone2 = ""
