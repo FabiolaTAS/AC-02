@@ -109,7 +109,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
                 Toast.makeText(context, query, Toast.LENGTH_SHORT).show()
                 return false
             }
-
         })
         return true
     }

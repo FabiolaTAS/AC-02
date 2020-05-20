@@ -27,92 +27,53 @@ class TelaCadastroActivity : AppCompatActivity() {
         //validação campo nome
         val textInputLayoutnome = findViewById<TextInputLayout>(R.id.nome)
         val editTextcamponomecompleto = textInputLayoutnome.editText
-
-
-
-//        if (!hasWindowFocus()) {
-//            if (stringnome.isEmpty()) {
-//                editTextcamponomecompleto?.setError("Campo Obrigatorio")
-//                editTextcamponomecompleto?.requestFocus()
-//            }
-//        }
-
         adicionaValidação(editTextcamponomecompleto)
-
-
-
 
         //validação campo profissão
         val textInputLayoutprofissao = findViewById<TextInputLayout>(R.id.profissao)
         val editTextcampoprofissao = textInputLayoutprofissao.editText
-        var stringprofissao = editTextcampoprofissao?.text.toString()
-
-        if (stringprofissao.isEmpty()) {
-            editTextcampoprofissao?.setError("Campo Obrigatorio")
-            textInputLayoutprofissao?.requestFocus()
-        }
+        adicionaValidação(editTextcampoprofissao)
 
         //validação campo telefone
         val textInputLayouttelefone = findViewById<TextInputLayout>(R.id.telefone)
         val editTextcampotelefone = textInputLayouttelefone.editText
-        var stringtelefone = editTextcampotelefone?.text.toString()
-
-        if (stringtelefone.isEmpty()) {
-            editTextcampotelefone?.setError("Campo Obrigatorio")
-            textInputLayouttelefone?.requestFocus()
-        }
+        adicionaValidação(editTextcampotelefone)
 
         //validação email
         val textInputLayoutemail = findViewById<TextInputLayout>(R.id.email)
         val editTextcampoemail = textInputLayoutemail.editText
-        var stringemail = editTextcampoemail?.text.toString()
-
-        if (stringemail.isEmpty()) {
-            editTextcampoemail?.setError("Campo Obrigatorio")
-            textInputLayoutemail?.requestFocus()
-        }
+        adicionaValidação(editTextcampoemail)
 
         //validaçao login
         val textInputLayoutlogin = findViewById<TextInputLayout>(R.id.login)
         val editTextcampologin = textInputLayoutlogin.editText
-        var stringlogin = editTextcampologin?.text.toString()
-
-        if (stringlogin.isEmpty()) {
-            editTextcampologin?.setError("Campo Obrigatorio")
-            textInputLayoutlogin?.requestFocus()
-        }
+        adicionaValidação(editTextcampologin)
 
         //validação senha
         val textInputLayoutsenha = findViewById<TextInputLayout>(R.id.senha)
         val editTextcamposenha = textInputLayoutsenha.editText
-        var stringsenha = editTextcamposenha?.text.toString()
-
-        if (stringsenha.isEmpty()) {
-            editTextcamposenha?.setError("Campo Obrigatorio")
-            textInputLayoutsenha?.requestFocus()
-        }
-
+        adicionaValidação(editTextcamposenha)
 
         button_salvar.setOnClickListener {
             val perfil = Perfil()
-            perfil.nome = nome.editText.toString()
-            perfil.email = email.editText.toString()
-            perfil.dtNascimento = dtNascimento.editText.toString()
-            perfil.telefone1 = telefone.editText.toString()
-            perfil.profissao = profissao.editText.toString()
-            perfil.login = login.editText.toString()
-            perfil.senha = senha.editText.toString()
+            perfil.nome = editTextcamponomecompleto?.text.toString()
+            perfil.email = editTextcampoemail?.text.toString()
+           // perfil.dtNascimento = edit.editText.toString()
+            perfil.telefone1 = editTextcampotelefone?.text.toString()
+            perfil.profissao = editTextcampoprofissao?.text.toString()
+            perfil.login = editTextcampologin?.text.toString()
+            perfil.senha = editTextcamposenha?.text.toString()
 
             taskAtualizar(perfil)
         }
     }
 
 
-     fun adicionaValidação(campo: EditText?) {
+    fun adicionaValidação(campo: EditText?) {
         campo?.setOnFocusChangeListener { v, hasFocus ->
             if (!hasFocus) {
-                if (campo?.text.toString().isEmpty()) {
-                    campo?.setError("Campo Obrigatorio")
+                if (campo.text.toString().isEmpty()) {
+                    campo.setError("Campo Obrigatorio")
                 }
             }
         }
