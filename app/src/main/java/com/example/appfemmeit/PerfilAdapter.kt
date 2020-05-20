@@ -23,7 +23,7 @@ class PerfilAdapter(
         val cardProfissao : TextView
 
         init {
-            cardNome = view.findViewById<TextView>(R.id.cardNome)
+            cardNome = view.findViewById(R.id.cardNome)
 //            card_img = view.findViewById<ImageView>(R.id.card_img)
             cardProgress = view.findViewById<ProgressBar>(R.id.cardProgress)
             cardView = view.findViewById<CardView>(R.id.card_perfil)
@@ -45,8 +45,8 @@ class PerfilAdapter(
         val context = holder.itemView.context
         val perfil = perfil[position]
 
-        holder.cardNome.text = perfil.nome
-        holder.cardProfissao.text = perfil.profissao
+        holder.cardNome.text = "Nome: " + perfil.nome
+        holder.cardProfissao.text = "Profissão: "+perfil.profissao
       //  holder.cardProgress.visibility = View.VISIBLE
 
         /*Picasso.with(context).load(perfil.img).fit().into(
