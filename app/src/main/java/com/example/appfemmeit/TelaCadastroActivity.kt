@@ -27,12 +27,20 @@ class TelaCadastroActivity : AppCompatActivity() {
         //validação campo nome
         val textInputLayoutnome = findViewById<TextInputLayout>(R.id.nome)
         val editTextcamponomecompleto = textInputLayoutnome.editText
-        var stringnome = editTextcamponomecompleto?.text.toString()
 
-        if (stringnome.isEmpty()) {
-            editTextcamponomecompleto?.setError("Campo Obrigatorio")
-            editTextcamponomecompleto?.requestFocus()
-        }
+
+
+//        if (!hasWindowFocus()) {
+//            if (stringnome.isEmpty()) {
+//                editTextcamponomecompleto?.setError("Campo Obrigatorio")
+//                editTextcamponomecompleto?.requestFocus()
+//            }
+//        }
+
+        adicionaValidação(editTextcamponomecompleto)
+
+
+
 
         //validação campo profissão
         val textInputLayoutprofissao = findViewById<TextInputLayout>(R.id.profissao)
@@ -99,6 +107,16 @@ class TelaCadastroActivity : AppCompatActivity() {
         }
     }
 
+
+     fun adicionaValidação(campo: EditText?) {
+        campo?.setOnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+                if (campo?.text.toString().isEmpty()) {
+                    campo?.setError("Campo Obrigatorio")
+                }
+            }
+        }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
