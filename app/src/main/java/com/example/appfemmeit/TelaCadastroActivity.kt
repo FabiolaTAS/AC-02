@@ -27,32 +27,32 @@ class TelaCadastroActivity : AppCompatActivity() {
         //validação campo nome
         val textInputLayoutnome = findViewById<TextInputLayout>(R.id.nome)
         val editTextcamponomecompleto = textInputLayoutnome.editText
-        adicionaValidação(editTextcamponomecompleto)
+        adicionaValidação(textInputLayoutnome)
 
         //validação campo profissão
         val textInputLayoutprofissao = findViewById<TextInputLayout>(R.id.profissao)
         val editTextcampoprofissao = textInputLayoutprofissao.editText
-        adicionaValidação(editTextcampoprofissao)
+        adicionaValidação(textInputLayoutprofissao)
 
         //validação campo telefone
         val textInputLayouttelefone = findViewById<TextInputLayout>(R.id.telefone)
         val editTextcampotelefone = textInputLayouttelefone.editText
-        adicionaValidação(editTextcampotelefone)
+        adicionaValidação(textInputLayouttelefone)
 
         //validação email
         val textInputLayoutemail = findViewById<TextInputLayout>(R.id.email)
         val editTextcampoemail = textInputLayoutemail.editText
-        adicionaValidação(editTextcampoemail)
+        adicionaValidação(textInputLayoutemail)
 
         //validaçao login
         val textInputLayoutlogin = findViewById<TextInputLayout>(R.id.login)
         val editTextcampologin = textInputLayoutlogin.editText
-        adicionaValidação(editTextcampologin)
+        adicionaValidação(textInputLayoutlogin)
 
         //validação senha
         val textInputLayoutsenha = findViewById<TextInputLayout>(R.id.senha)
         val editTextcamposenha = textInputLayoutsenha.editText
-        adicionaValidação(editTextcamposenha)
+        adicionaValidação(textInputLayoutsenha)
 
         button_salvar.setOnClickListener {
             val perfil = Perfil()
@@ -69,11 +69,15 @@ class TelaCadastroActivity : AppCompatActivity() {
     }
 
 
-    fun adicionaValidação(campo: EditText?) {
+    fun adicionaValidação(textInputLayout: TextInputLayout) {
+        val campo = textInputLayout.editText
         campo?.setOnFocusChangeListener { v, hasFocus ->
             if (!hasFocus) {
                 if (campo.text.toString().isEmpty()) {
-                    campo.setError("Campo Obrigatorio")
+                    textInputLayout.setError("Campo Obrigatorio")
+                }else{
+                    textInputLayout.setError(null)
+                    textInputLayout.isErrorEnabled
                 }
             }
         }
