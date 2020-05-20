@@ -8,21 +8,22 @@ import java.io.Serializable
 @Entity(tableName = "perfil")
 class Perfil : Serializable {
 
-    var email = ""
-    var img = ""
-    @PrimaryKey
-    var id: Long = 0
-    var linkedin = ""
-    var nome = ""
-    var telefone1 = ""
-    var perfil = ""
     var cpf = ""
     var dtNascimento = ""
+    var email = ""
     var gitHub = ""
+    @PrimaryKey
+    var id: Long = 0
+    var img = ""
+    var linkedin = ""
     var login = ""
-    var senha = ""
-    var telefone2 = ""
+    var nome = ""
+    var perfil = ""
     var profissao = ""
+    var senha = ""
+    var telefone1 = ""
+    var telefone2 = ""
+
 
     override fun toString(): String {
         return "Usuario (Nome='$nome')"

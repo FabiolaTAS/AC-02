@@ -21,6 +21,7 @@ class PerfilAdapter(
         val cardProgress: ProgressBar
         val cardView: CardView
         val cardProfissao : TextView
+        val card_perfil_exibicao : TextView
 
         init {
             cardNome = view.findViewById(R.id.cardNome)
@@ -28,6 +29,7 @@ class PerfilAdapter(
             cardProgress = view.findViewById<ProgressBar>(R.id.cardProgress)
             cardView = view.findViewById<CardView>(R.id.card_perfil)
             cardProfissao = view.findViewById(R.id.card_profissao)
+            card_perfil_exibicao = view.findViewById(R.id.card_perfil_exibicao)
         }
     }
 
@@ -47,6 +49,7 @@ class PerfilAdapter(
 
         holder.cardNome.text = "Nome: " + perfil.nome
         holder.cardProfissao.text = "Profissão: "+perfil.profissao
+        holder.card_perfil_exibicao.text = "Perfil: "+ perfil.perfil
       //  holder.cardProgress.visibility = View.VISIBLE
 
         /*Picasso.with(context).load(perfil.img).fit().into(
