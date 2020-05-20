@@ -43,7 +43,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/nome"
+            android:id="@+id/nome_cadastro"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
@@ -61,13 +61,13 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/profissao"
+            android:id="@+id/profissao_cadastro"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/nome"
-            app:layout_constraintStart_toStartOf="@+id/nome"
-            app:layout_constraintTop_toBottomOf="@+id/nome">
+            app:layout_constraintEnd_toEndOf="@+id/nome_cadastro"
+            app:layout_constraintStart_toStartOf="@+id/nome_cadastro"
+            app:layout_constraintTop_toBottomOf="@+id/nome_cadastro">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -76,13 +76,13 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/telefone"
+            android:id="@+id/telefone_cadastro"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/profissao"
-            app:layout_constraintStart_toStartOf="@+id/profissao"
-            app:layout_constraintTop_toBottomOf="@+id/profissao">
+            app:layout_constraintEnd_toEndOf="@+id/profissao_cadastro"
+            app:layout_constraintStart_toStartOf="@+id/profissao_cadastro"
+            app:layout_constraintTop_toBottomOf="@+id/profissao_cadastro">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -95,9 +95,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/telefone"
-            app:layout_constraintStart_toStartOf="@+id/telefone"
-            app:layout_constraintTop_toBottomOf="@+id/telefone">
+            app:layout_constraintEnd_toEndOf="@+id/telefone_cadastro"
+            app:layout_constraintStart_toStartOf="@+id/telefone_cadastro"
+            app:layout_constraintTop_toBottomOf="@+id/telefone_cadastro">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -106,7 +106,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/login"
+            android:id="@+id/login_cadastro"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -125,9 +125,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/login"
-            app:layout_constraintStart_toStartOf="@+id/login"
-            app:layout_constraintTop_toBottomOf="@+id/login">
+            app:layout_constraintEnd_toEndOf="@+id/login_cadastro"
+            app:layout_constraintStart_toStartOf="@+id/login_cadastro"
+            app:layout_constraintTop_toBottomOf="@+id/login_cadastro">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -181,7 +181,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/TelefoneSecundário"
+            android:id="@+id/telefoneSecundario"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -200,9 +200,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/TelefoneSecundário"
-            app:layout_constraintStart_toStartOf="@+id/TelefoneSecundário"
-            app:layout_constraintTop_toBottomOf="@+id/TelefoneSecundário">
+            app:layout_constraintEnd_toEndOf="@+id/telefoneSecundario"
+            app:layout_constraintStart_toStartOf="@+id/telefoneSecundario"
+            app:layout_constraintTop_toBottomOf="@+id/telefoneSecundario">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
