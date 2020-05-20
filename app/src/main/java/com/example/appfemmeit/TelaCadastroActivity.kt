@@ -103,7 +103,6 @@ class TelaCadastroActivity : AppCompatActivity() {
             }
         }.start()
     }
-
 }
 
 
