@@ -5,9 +5,9 @@ import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
-class MyFirebaseMessagingService: FirebaseMessagingService() {
+class MyFirebaseMessagingService : FirebaseMessagingService() {
 
-    val TAG = "FIREBASE"
+    val TAG = "FIREBASE_FEMMEIT"
 
     override fun onNewToken(token: String?) {
         super.onNewToken(token)
@@ -21,11 +21,20 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
 
         if (mensagemRemota?.notification != null) {
             val titulo = mensagemRemota?.notification?.title
-            val corpo = mensagemRemota?.notification?.body
+            var corpo = mensagemRemota?.notification?.body
             Log.d(TAG, "Titulo da mensagem: $titulo")
             Log.d(TAG, "Corpo da mensagem: $corpo")
 
+
+            if (mensagemRemota?.data.isNotEmpty()){
+                val perfilId = mensagemRemota.data.get("perfilId")
+                corpo = "$corpo($perfilId)"
+            }
             showNotification(mensagemRemota)
+
+            val intent = Intent(this, PerfilActivity::class.java)
+            NotificationUtil.create(this, 1, intent, titulo!!, corpo!!)
+
         }
     }
 
@@ -33,10 +42,10 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
 
         val intent = Intent(this, PerfilActivity::class.java)
 
-        val titulo = mensagemRemota?.notification?.title?: getString(R.string.app_name)
+        val titulo = mensagemRemota?.notification?.title ?: getString(R.string.app_name)
         var mensagem = mensagemRemota?.notification?.body!!
 
-         if(mensagemRemota?.data.isNotEmpty()) {
+        if (mensagemRemota?.data.isNotEmpty()) {
             val perfilId = mensagemRemota.data.get("perfilId")?.toLong()!!
             mensagem += ""
 
