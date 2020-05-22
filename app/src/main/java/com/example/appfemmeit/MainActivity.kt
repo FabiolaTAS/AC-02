@@ -2,6 +2,7 @@ package com.example.appfemmeit
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import kotlinx.android.synthetic.main.logincontraint.*
 
 
@@ -23,7 +24,7 @@ class MainActivity : DebugActivity() {
         }
 
 
-        var lembrar = Prefs.    getBoolean("lembrar")
+        var lembrar = Prefs.getBoolean("lembrar")
         var usuario = Prefs.getStrin("lembrarnome")
         var senha = Prefs.getStrin("lembrarsenha")
         label_user.setText(usuario)
@@ -31,6 +32,28 @@ class MainActivity : DebugActivity() {
         check_lembrar.isChecked = lembrar
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        abrirPerfil()
+        Log.d("firebase", "Firebase Token: ${Prefs.getStrin("FB_TOKEN")}")
+    }
+
+    fun abrirPerfil() {
+
+        if (intent.hasExtra("perfilId")) {
+            Thread {
+                var perfilId = intent.getStringExtra("perfilId")?.toLong()!!
+                val perfil = PerfilService.getPerfil(this, perfilId)
+                runOnUiThread {
+                    val intentPefil = Intent(this, PerfilActivity::class.java)
+                    intentPefil.putExtra("perfil", perfil)
+                    startActivity(intentPefil)
+                }
+            }.start()
+        }
+    }
+
 
     fun onClickLogin() {
         val valorUser = label_user.text.toString()

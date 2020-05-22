@@ -68,13 +68,14 @@ object PerfilService {
         return GsonBuilder().create().toJson(this)
     }
 
+
     fun save(perfil: Perfil): Response {
         if (AndroidUtils.IsInternetOnline()) {
             val json = HttpHelper.post("$host/perfils", perfil.toJson())
             return parserJson(json)
         } else {
             saveOffiline(perfil)
-            return Response("OK", "Cadastro sucesso")
+            return Response("OK", "Cadastrado com sucesso")
         }
     }
 
