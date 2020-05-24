@@ -116,6 +116,26 @@ class TelaCadastroActivity : AppCompatActivity() {
     private fun configuraCpf(): EditText? {
         val textInputLayoutCpf = findViewById<TextInputLayout>(R.id.cpf_cadastro)
         val editTextcamponomeCpf = textInputLayoutCpf.editText
+
+        editTextcamponomeCpf?.setOnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+                if (editTextcamponomeCpf.text.toString().isEmpty()) {
+                    textInputLayoutCpf.setError("Campo Obrigatorio")
+                } else {
+                    textInputLayoutCpf.setError(null)
+                    textInputLayoutCpf.isErrorEnabled
+                }
+                if (editTextcamponomeCpf.length() != 11){
+                    textInputLayoutCpf.setError("O CPF precisa ter 11 dígitos")
+                }else {
+                    textInputLayoutCpf.setError(null)
+                    textInputLayoutCpf.isErrorEnabled
+                }
+            }
+        }
+
+
+
         adicionaValidação(textInputLayoutCpf)
         return editTextcamponomeCpf
     }
