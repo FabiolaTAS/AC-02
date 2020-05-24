@@ -8,6 +8,11 @@ class MapasActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mapas)
+
+        setTitle("Localização")
+
+        ///seta de voltar na toolbar
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onResume() {
