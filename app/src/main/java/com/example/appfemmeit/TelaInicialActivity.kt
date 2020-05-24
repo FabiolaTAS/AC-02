@@ -173,3 +173,5 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     }
 
 }
+
+
