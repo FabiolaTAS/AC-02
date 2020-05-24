@@ -163,7 +163,9 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
                 Toast.makeText(this, "Clicou em Forum", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_localizacao -> {
-                Toast.makeText(this, "Clicou em Localização", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "Clicou em Localização", Toast.LENGTH_SHORT).show()
+                var intent = Intent(this, MapasActivity::class.java)
+                startActivity(intent)
             }
 
             R.id.nav_sairApp -> {
