@@ -11,9 +11,8 @@ class MapasActivity : AppCompatActivity() {
 
         setTitle("Localização")
 
-        ///seta de voltar na toolbar
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
+
 
     override fun onResume() {
         super.onResume()
