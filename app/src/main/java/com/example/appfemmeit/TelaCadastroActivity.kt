@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View.OnFocusChangeListener
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -33,7 +34,7 @@ class TelaCadastroActivity : AppCompatActivity() {
         val editTextcamposenha = configuraSenha()
         val editTextcamponomeLinkedin = configuraLinkedin()
         val editTexttextInputLayoutGithub = configuraGithub()
-        val editTextcamponomeCpf = configuraCpf()
+        val editTextcamponomeCpf = configuraCampoCpf()
         val editTextcamponomePerfil = configuraPerfil()
         val editTextcamponomeTelSeg = configuraTelSeg()
         val editTextcamponomeDataNas = configuraDataNas()
@@ -48,7 +49,7 @@ class TelaCadastroActivity : AppCompatActivity() {
             perfil.senha = editTextcamposenha?.text.toString()
             perfil.linkedin = editTextcamponomeLinkedin?.text.toString()
             perfil.gitHub = editTexttextInputLayoutGithub?.text.toString()
-            perfil.cpf = editTextcamponomeCpf?.text.toString()
+            perfil.cpf = editTextcamponomeCpf.toString()
             perfil.perfil = editTextcamponomePerfil?.text.toString()
             perfil.telefone2 = editTextcamponomeTelSeg?.text.toString()
             perfil.dtNascimento = editTextcamponomeDataNas?.text.toString()
@@ -128,45 +129,29 @@ class TelaCadastroActivity : AppCompatActivity() {
         return editTexttextInputLayoutGithub
     }
 
-    private fun configuraCpf(): EditText? {
-        val textInputLayoutCpf = findViewById<TextInputLayout>(R.id.cpf_cadastro)
-        val editTextcamponomeCpf = textInputLayoutCpf.editText
-        val cpf: String = editTextcamponomeCpf?.text.toString()
-        var cpfFormatter = CPFFormatter()
-        editTextcamponomeCpf?.setOnFocusChangeListener { v, hasFocus ->
+    private fun configuraCampoCpf() {
+        val textInputCpf: TextInputLayout = findViewById(R.id.cpf_cadastro)
+        val campoCpf = textInputCpf.editText
+        val cpfFormatter = CPFFormatter()
+        campoCpf!!.onFocusChangeListener = OnFocusChangeListener { v, hasFocus ->
+            val cpf = campoCpf.text.toString()
             if (!hasFocus) {
-                if (!validaCampoObrigatorio(
-                        editTextcamponomeCpf,
-                        textInputLayoutCpf
-                    )
-                ) return@setOnFocusChangeListener
-                if (!ValidaCampoComOnzeDigitos(
-                        editTextcamponomeCpf,
-                        textInputLayoutCpf
-                    )
-                ) return@setOnFocusChangeListener
-
-                if (!validaCalculoCpf(
-                        editTextcamponomeCpf,
-                        textInputLayoutCpf
-                    )
-                ) return@setOnFocusChangeListener
-
-                removeErro(textInputLayoutCpf)
-
+                if (!validaCampoObrigatorio(campoCpf, textInputCpf)) return@OnFocusChangeListener
+                if (!validaCampoComOnzeDigitos(campoCpf, textInputCpf)) return@OnFocusChangeListener
+                if (!validaCalculoCpf(campoCpf, textInputCpf)) return@OnFocusChangeListener
+                removeErro(textInputCpf)
                 ///formta CPF com biblioteca Stella
                 val cpfFormatado = cpfFormatter.format(cpf)
-                editTextcamponomeCpf.setText(cpfFormatado)
+                campoCpf.setText(cpfFormatado)
             } else {
                 try {
                     val cpfSemFormato = cpfFormatter.unformat(cpf)
-                    editTextcamponomeCpf.setText(cpfSemFormato)
+                    campoCpf.setText(cpfSemFormato)
                 } catch (e: IllegalArgumentException) {
                     Log.e("erro formatação cpf", e.message)
                 }
             }
         }
-        return editTextcamponomeCpf
     }
 
 
@@ -184,7 +169,7 @@ class TelaCadastroActivity : AppCompatActivity() {
         return true
     }
 
-    private fun ValidaCampoComOnzeDigitos(
+    private fun validaCampoComOnzeDigitos(
         editTextcamponomeCpf: EditText,
         textInputLayoutCpf: TextInputLayout
     ): Boolean {
