@@ -1,16 +1,16 @@
 package com.example.appfemmeit
 
 import android.os.Bundle
-import android.view.FocusFinder
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
+import br.com.caelum.stella.format.CPFFormatter
+import br.com.caelum.stella.validation.CPFValidator
+import br.com.caelum.stella.validation.InvalidStateException
 import com.google.android.material.textfield.TextInputLayout
-import kotlinx.android.synthetic.main.activity_perfil.*
 import kotlinx.android.synthetic.main.activity_tela_cadastro.*
 
 
@@ -81,8 +81,23 @@ class TelaCadastroActivity : AppCompatActivity() {
         val textInputLayouttelefone = findViewById<TextInputLayout>(R.id.telefone_cadastro)
         val editTextcampotelefone = textInputLayouttelefone.editText
         adicionaValidação(textInputLayouttelefone)
+
+        editTextcampotelefone?.setOnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+                if (!validaCampoObrigatorio(
+                        editTextcampotelefone,
+                        textInputLayouttelefone
+                    )
+                ) return@setOnFocusChangeListener
+                if (editTextcampotelefone.length() < 10 || editTextcampotelefone.length() > 11) {
+                    textInputLayouttelefone.error = "O celular deve conter de dez a onze digitos"
+                }
+            }
+        }
+        removeErro(textInputLayouttelefone)
         return editTextcampotelefone
     }
+
 
     private fun configuraProfissao(): EditText? {
         //validação campo profissão
@@ -116,29 +131,70 @@ class TelaCadastroActivity : AppCompatActivity() {
     private fun configuraCpf(): EditText? {
         val textInputLayoutCpf = findViewById<TextInputLayout>(R.id.cpf_cadastro)
         val editTextcamponomeCpf = textInputLayoutCpf.editText
-
+        val cpf: String = editTextcamponomeCpf?.text.toString()
+        var cpfFormatter = CPFFormatter()
         editTextcamponomeCpf?.setOnFocusChangeListener { v, hasFocus ->
             if (!hasFocus) {
-                if (editTextcamponomeCpf.text.toString().isEmpty()) {
-                    textInputLayoutCpf.setError("Campo Obrigatorio")
-                } else {
-                    textInputLayoutCpf.setError(null)
-                    textInputLayoutCpf.isErrorEnabled
-                }
-                if (editTextcamponomeCpf.length() != 11){
-                    textInputLayoutCpf.setError("O CPF precisa ter 11 dígitos")
-                }else {
-                    textInputLayoutCpf.setError(null)
-                    textInputLayoutCpf.isErrorEnabled
+                if (!validaCampoObrigatorio(
+                        editTextcamponomeCpf,
+                        textInputLayoutCpf
+                    )
+                ) return@setOnFocusChangeListener
+                if (!ValidaCampoComOnzeDigitos(
+                        editTextcamponomeCpf,
+                        textInputLayoutCpf
+                    )
+                ) return@setOnFocusChangeListener
+
+                if (!validaCalculoCpf(
+                        editTextcamponomeCpf,
+                        textInputLayoutCpf
+                    )
+                ) return@setOnFocusChangeListener
+
+                removeErro(textInputLayoutCpf)
+
+                ///formta CPF com biblioteca Stella
+                val cpfFormatado = cpfFormatter.format(cpf)
+                editTextcamponomeCpf.setText(cpfFormatado)
+            } else {
+                try {
+                    val cpfSemFormato = cpfFormatter.unformat(cpf)
+                    editTextcamponomeCpf.setText(cpfSemFormato)
+                } catch (e: IllegalArgumentException) {
+                    Log.e("erro formatação cpf", e.message)
                 }
             }
         }
-
-
-
-        adicionaValidação(textInputLayoutCpf)
         return editTextcamponomeCpf
     }
+
+
+    private fun validaCalculoCpf(
+        editTextcamponomeCpf: EditText,
+        textInputLayoutCpf: TextInputLayout
+    ): Boolean {
+        try {
+            var cpfValidator = CPFValidator()
+            cpfValidator.assertValid(editTextcamponomeCpf.text.toString())
+        } catch (e: InvalidStateException) {
+            textInputLayoutCpf.setError("CPF Inválido")
+            return false
+        }
+        return true
+    }
+
+    private fun ValidaCampoComOnzeDigitos(
+        editTextcamponomeCpf: EditText,
+        textInputLayoutCpf: TextInputLayout
+    ): Boolean {
+        if (editTextcamponomeCpf.length() != 11) {
+            textInputLayoutCpf.setError("O CPF precisa ter 11 dígitos")
+            return false
+        }
+        return true
+    }
+
 
     private fun configuraPerfil(): EditText? {
         val textInputLayoutPerfil = findViewById<TextInputLayout>(R.id.perfilCAdastro)
@@ -166,7 +222,8 @@ class TelaCadastroActivity : AppCompatActivity() {
         val campo = textInputLayout.editText
         campo?.setOnFocusChangeListener { v, hasFocus ->
             if (!hasFocus) {
-                validaCampoObrigatorio(campo, textInputLayout)
+                if (!validaCampoObrigatorio(campo, textInputLayout)) return@setOnFocusChangeListener
+                removeErro(textInputLayout)
             }
         }
     }
@@ -174,13 +231,19 @@ class TelaCadastroActivity : AppCompatActivity() {
     private fun validaCampoObrigatorio(
         campo: EditText,
         textInputLayout: TextInputLayout
-    ) {
+    ): Boolean {
         if (campo.text.toString().isEmpty()) {
             textInputLayout.setError("Campo Obrigatorio")
+            return false
         } else {
-            textInputLayout.setError(null)
-            textInputLayout.isErrorEnabled
+            removeErro(textInputLayout)
+            return true
         }
+    }
+
+    private fun removeErro(textInputLayout: TextInputLayout) {
+        textInputLayout.setError(null)
+        textInputLayout.isErrorEnabled
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
