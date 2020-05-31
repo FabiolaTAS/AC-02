@@ -82,7 +82,7 @@ class TelaCadastroActivity : AppCompatActivity() {
         val textInputLayouttelefone = findViewById<TextInputLayout>(R.id.telefone_cadastro)
         val editTextcampotelefone = textInputLayouttelefone.editText
         adicionaValidação(textInputLayouttelefone)
-
+        var telefoneComDdd =     textInputLayouttelefone?.toString()
         editTextcampotelefone?.setOnFocusChangeListener { v, hasFocus ->
             if (!hasFocus) {
                 if (!validaCampoObrigatorio(
@@ -93,10 +93,27 @@ class TelaCadastroActivity : AppCompatActivity() {
                 if (editTextcampotelefone.length() < 10 || editTextcampotelefone.length() > 11) {
                     textInputLayouttelefone.error = "O celular deve conter de dez a onze digitos"
                 }
+                formata(telefoneComDdd)
+               }else{
+                remove(telefoneComDdd)
             }
         }
         removeErro(textInputLayouttelefone)
         return editTextcampotelefone
+    }
+
+
+    fun formata(telefoneComDdd: String?): String? {
+        return telefoneComDdd
+            ?.replace("([0-9]{2})([0-9]{4,5})([0-9]{4})".toRegex(), "($1) $2-$3")
+    }
+
+    fun remove(telefoneComDdd: String?): String? {
+        return telefoneComDdd
+            ?.replace("(", "")
+            ?.replace(")", "")
+            ?.replace(" ", "")
+            ?.replace("-", "")
     }
 
 
@@ -198,7 +215,20 @@ class TelaCadastroActivity : AppCompatActivity() {
     private fun configuraTelSeg(): EditText? {
         val textInputLayoutTelSeg = findViewById<TextInputLayout>(R.id.telefoneSecundario)
         val editTextcamponomeTelSeg = textInputLayoutTelSeg.editText
-        //  adicionaValidação(textInputLayoutPerfil)
+
+        editTextcamponomeTelSeg?.setOnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus) {
+                if (!validaCampoObrigatorio(
+                        editTextcamponomeTelSeg,
+                        textInputLayoutTelSeg
+                    )
+                ) return@setOnFocusChangeListener
+                if (editTextcamponomeTelSeg.length() < 10 || editTextcamponomeTelSeg.length() > 11) {
+                    textInputLayoutTelSeg.error = "O celular deve conter de dez a onze digitos"
+                }
+            }
+        }
+        removeErro(textInputLayoutTelSeg)
         return editTextcamponomeTelSeg
     }
 
